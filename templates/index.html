@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TaskFlow — To-Do List</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <div class="bg-circles">
+    <div class="circle c1"></div>
+    <div class="circle c2"></div>
+    <div class="circle c3"></div>
+  </div>
+
+  <div class="app-wrapper">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">✦</span>
+        <span class="logo-text">TaskFlow</span>
+      </div>
+      <div class="stats">
+        <span id="stats-text">0 tasks remaining</span>
+      </div>
+    </header>
+
+    <!-- Input Section -->
+    <div class="input-card">
+      <div class="input-row">
+        <input type="text" id="task-input" placeholder="What needs to be done?" autocomplete="off"/>
+        <select id="category-select">
+          <option value="General">📌 General</option>
+          <option value="Work">💼 Work</option>
+          <option value="Personal">🏠 Personal</option>
+          <option value="Shopping">🛒 Shopping</option>
+          <option value="Health">💪 Health</option>
+        </select>
+        <button id="add-btn" onclick="addTask()">Add Task</button>
+      </div>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="filter-tabs">
+      <button class="tab active" data-filter="all" onclick="setFilter('all', this)">All</button>
+      <button class="tab" data-filter="active" onclick="setFilter('active', this)">Active</button>
+      <button class="tab" data-filter="completed" onclick="setFilter('completed', this)">Completed</button>
+    </div>
+
+    <!-- Task List -->
+    <div class="task-list" id="task-list">
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">🌿</div>
+        <p>No tasks yet. Add something to get started!</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-actions">
+      <button class="clear-btn" onclick="clearCompleted()">Clear Completed</button>
+    </div>
+
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
